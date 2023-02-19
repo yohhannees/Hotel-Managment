@@ -44,8 +44,8 @@ public class HotelManagementSystem {
                     System.out.print("Enter Admin Password: ");
                     String adminPassword = scanner.nextLine();
 
-                    if (adminLoginCredentials.containsKey(adminUsername)
-                            && adminLoginCredentials.get(adminUsername).equals(adminPassword)) {
+                    if (adminLoginCredentials.containsKey(adminUsername) &&
+                            adminLoginCredentials.get(adminUsername).equals(adminPassword)) {
                         // Admin logged in successfully
                         clearScreen();
                         System.out.println("Admin Login Successful!");
@@ -133,8 +133,8 @@ public class HotelManagementSystem {
                     System.out.print("Enter Receptionist Password: ");
                     String receptionistPassword = scanner.nextLine();
 
-                    if (receptionistLoginCredentials.containsKey(receptionistUsername)
-                            && receptionistLoginCredentials.get(receptionistUsername).equals(receptionistPassword)) {
+                    if (receptionistLoginCredentials.containsKey(receptionistUsername) &&
+                            receptionistLoginCredentials.get(receptionistUsername).equals(receptionistPassword)) {
                         // Receptionist logged in successfully
                         clearScreen();
                         System.out.println("");
@@ -210,38 +210,23 @@ public class HotelManagementSystem {
                                     clearScreen();
                                     System.out.println("Customer Details:");
                                     System.out.println("");
-                                    //display the details of all the Reservations in the ArrayList
+                                    // display the details of all the Reservations in the ArrayList
                                     for (int i = 0; i < list.size(); i++) {
-                                    Reservation r = list.get(i);
-                                    System.out.println("======CUSTOMER" + (i + 1) + "=====");
-                                    System.out.println("");
-                                    System.out.println("Name: " + reservation.getName());
-                                    System.out.println("Mobile Number: " + reservation.getMobileNumber());
-                                    System.out.println("ID: " + reservation.getId());
-                                    System.out.println("Gender: " + reservation.getGender());
-                                    System.out.println("Check-in Date: " + reservation.getCheckInDate());
-                                    System.out.println("Room Type: " + reservation.getRoomType());
-                                    System.out.println("Room Number: " + reservation.getRoomNumber());
-                                    System.out.println("Price: " + reservation.getPrice());
-                                    System.out.println("Address: " + reservation.getAddress());
-                                    System.out.println();
+                                        reservation = list.get(i);
+                                        System.out.println("======CUSTOMER" + (i + 1) + "=====");
+                                        System.out.println("");
+
+                                        System.out.println("Name: " + reservation.getName());
+                                        System.out.println("Mobile Number: " + reservation.getMobileNumber());
+                                        System.out.println("ID: " + reservation.getId());
+                                        System.out.println("Gender: " + reservation.getGender());
+                                        System.out.println("Check-in Date: " + reservation.getCheckInDate());
+                                        System.out.println("Room Type: " + reservation.getRoomType());
+                                        System.out.println("Room Number: " + reservation.getRoomNumber());
+                                        System.out.println("Price: " + reservation.getPrice());
+                                        System.out.println("Address: " + reservation.getAddress());
+                                        System.out.println();
                                     }
-                                    //displaying the list line by line using get
-
-                                    // for (int i = 0; i < list.size(); i++) {
-                                    //     System.out.println("======CUSTOMER" + (i + 1) + "=====");
-                                    //     System.out.println("");
-                                    //     System.out.println("Name: " + reservation.Name(i));
-                                    //     System.out.println("Mobile Number: " + reservation.MobileNumber(i));
-                                    //     System.out.println("ID: " + reservation.Id(i));
-                                    //     System.out.println("Gender: " + reservation.Gender(i));
-                                    //     System.out.println("Check-in Date: " + reservation.checkInDate(i));
-                                    //     System.out.println("Room Type: " + reservation.roomType(i));
-                                    //     System.out.println("Room Number: " + reservation.roomNumber(i));
-                                    //     System.out.println("Price: " + reservation.Price(i));
-                                    //     System.out.println("Address: " + reservation.address(i));
-
-                                    // }
 
                                     System.out.println("");
                                     System.out.println("");
@@ -251,17 +236,6 @@ public class HotelManagementSystem {
                                 }
 
                                 case 3:
-                                    // in case 3, display the data
-
-                                    System.out.print("Enter Room Number: ");
-                                    int checkOutRoomNumber = scanner.nextInt();
-
-                                    // Do something with check-out data
-
-                                    System.out.println("Customer Checked-Out Successfully!");
-                                    break;
-
-                                case 4:
                                     clearScreen();
                                     // prompt the user to enter the details of the Reservation to be checked out and
                                     // deleted
@@ -272,8 +246,8 @@ public class HotelManagementSystem {
                                     // find the Reservation to check out and delete based on the user's input
                                     Reservation reservationToDelete = null;
                                     for (Reservation r : list) {
-                                        if (r.getName().equals(query) || r.getId().equals(query)
-                                                || r.getRoomNumber() == Integer.parseInt(query)) {
+                                        if (r.getName().equals(query) || r.getId().equals(query) ||
+                                                r.getRoomNumber().equals(query)) {
                                             reservationToDelete = r;
                                             break;
                                         }
@@ -283,12 +257,12 @@ public class HotelManagementSystem {
                                     if (reservationToDelete != null) {
                                         // prompt the user to enter the check-out date
                                         System.out.print("Number of Days stayed : ");
-                                        double daysStayed = scanner.nextLine();
+                                        double daysStayed = scanner.nextDouble();
 
                                         // calculate the number of days the customer stayed and the total price
-                                    
-                                              
-                                        double totalPrice = daysStayed * reservationToDelete.getPrice();
+
+                                        double totalPrice = daysStayed *
+                                                Double.parseDouble(reservationToDelete.getPrice());
 
                                         System.out.println("Total Price: " + totalPrice);
 
@@ -301,6 +275,13 @@ public class HotelManagementSystem {
                                         System.out.println("");
                                         System.out.println("");
                                     }
+                                    break;
+
+                                case 4:
+                                    clearScreen();
+                                    System.out.println(" Logged Out Successfully.");
+                                    System.out.println("");
+                                    System.out.println("");
                                     break;
 
                                 default:
